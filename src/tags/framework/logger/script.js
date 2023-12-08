@@ -1,0 +1,77 @@
+/*
+ * Copyright 2023 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+(function(w, o) {
+  var DATA_LAYER_EVENT = 'tagsmith_event';
+
+  var userVariant = w[o].userVariant();
+  var userTestName = userVariant ?
+    userVariant.substr(0, userVariant.lastIndexOf('_')) :
+    null;
+
+  /** @typedef {function(string, string): void} */
+  // eslint-disable-next-line no-unused-vars
+  var Logger;
+
+  /**
+   * Loggers enabled by test (loggersByTest[testName][featureId]).
+   * @type {!Object<string, !Object<string, !Logger>>}
+   */
+  var loggersByTest = {};
+
+  w.dataLayer = w.dataLayer || [];
+
+  w[o] = w[o] || {};
+
+  /**
+   * Get logger for feature on a specific variant.
+   * @param {string} feature
+   * @param {string} forVariant
+   * @return {!Logger|false} `false` when logger shouldn't be enabled.
+   */
+  w[o].getLogger = function(feature, forVariant) {
+    // Don't log events when feature is enabled for all users
+    if (forVariant === 'all') {
+      return false;
+    }
+
+    var forTestName = forVariant.substr(0, forVariant.lastIndexOf('_'));
+
+    // Only log for matched test
+    if (userTestName !== forTestName) {
+      return false;
+    }
+
+    // Prevent duplicate logging
+    if (loggersByTest[forTestName] && loggersByTest[forTestName][feature]) {
+      return false;
+    }
+
+    var logger = function(name, value) {
+      w.dataLayer.push({
+        event: DATA_LAYER_EVENT,
+        userVariant: userVariant,
+        id: feature + '.' + name,
+        value: value
+      });
+    };
+
+    loggersByTest[forTestName] = loggersByTest[forTestName] || {};
+    loggersByTest[forTestName][feature] = logger;
+
+    return logger;
+  };
+})(window, '__tagsmith');
