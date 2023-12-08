@@ -1,0 +1,53 @@
+<!--
+ * Copyright 2023 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+
+<!-- Tagsmith, Debugger, v1.0.0 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+<% style %>
+<div id="__tagsmith_debugger">
+  <div class="__tagsmith_debugger_open __tagsmith_debugger_icon"></div>
+  <div class="__tagsmith_debugger_container">
+    <div class="__tagsmith_debugger_popup">
+      <div class="__tagsmith_debugger_header">
+        <div class="__tagsmith_debugger_icon"></div>
+        Tagsmith Debugger
+        <div class="__tagsmith_debugger_close">close</div>
+      </div>
+      <div class="__tagsmith_debugger_body">
+        <div>
+          <div class="__tagsmith_debugger_sectionTitle">Errors</div>
+          <div id="__tagsmith_debugger_errors"></div>
+        </div>
+        <div>
+          <div class="__tagsmith_debugger_sectionTitle">Featured enabled for all users</div>
+          <div id="__tagsmith_debugger_featuresForAll"></div>
+        </div>
+        <table class="__tagsmith_debugger_table">
+          <thead>
+            <tr>
+              <th>Test</th>
+              <th>Variant</th>
+              <th>Feature Enabled</th>
+              <th>Loggers Enabled</th>
+            </tr>
+          </thead>
+          <tbody id="__tagsmith_debugger_testStatus"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<% script %>

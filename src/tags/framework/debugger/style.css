@@ -1,0 +1,241 @@
+/*
+ * Copyright 2023 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.__tagsmith_debugger_icon {
+  background: center no-repeat url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='100%25' height='100%25' viewBox='0 0 512 512' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' xmlns:serif='http://www.serif.com/' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cg transform='matrix(0.707107,-0.707107,0.707107,0.707107,-135.505,226.533)'%3E%3Cpath id='base' d='M404,170.352C404,159.213 399.575,148.53 391.698,140.653C368.601,117.556 318.154,67.108 285.698,34.653C269.296,18.251 242.704,18.251 226.302,34.653C193.846,67.108 143.399,117.556 120.302,140.653C112.425,148.53 108,159.213 108,170.352C108,220.899 108,368.788 108,441.963C108,453.102 112.425,463.785 120.302,471.662C128.178,479.538 138.861,483.963 150,483.963C206.309,483.963 305.691,483.963 362,483.963C373.139,483.963 383.822,479.538 391.698,471.662C399.575,463.785 404,453.102 404,441.963C404,368.788 404,220.899 404,170.352ZM256,78C273.661,78 288,92.339 288,110C288,127.661 273.661,142 256,142C238.339,142 224,127.661 224,110C224,92.339 238.339,78 256,78Z' style='fill:rgb(68,34,98);'/%3E%3Cg id='flame' transform='matrix(0.994924,0,0,0.841367,1.139,76.3033)'%3E%3Cpath d='M404.916,362.263C404.916,360.032 403.604,358.101 401.761,357.621C399.919,357.14 398.041,358.24 397.248,360.264C395.018,365.955 392.645,372.01 390.643,377.118C387.702,384.624 381.342,389.427 374.347,389.427C374.347,389.427 374.347,389.427 374.346,389.427C367.452,389.427 361.391,384.029 359.488,376.192C353.921,353.263 342.537,306.379 336.887,283.112C334.914,274.984 328.627,269.385 321.476,269.385C321.476,269.385 321.476,269.385 321.475,269.385C314.258,269.385 307.825,274.767 305.423,282.815C300.108,300.624 290.705,332.128 284.742,352.104C281.468,363.075 272.7,370.411 262.862,370.411C262.861,370.411 262.861,370.411 262.861,370.411C256.886,370.411 251.402,366.499 248.615,360.248C243.462,348.694 235.051,329.829 229.52,317.424C226.124,309.808 219.441,305.041 212.159,305.041L212.158,305.041C202.36,305.041 193.6,312.257 190.203,323.123C182.801,346.805 169.971,387.85 163.195,409.527C160.496,418.162 153.535,423.895 145.75,423.895C145.75,423.895 145.75,423.895 145.749,423.895C137.242,423.895 129.675,417.504 126.916,407.988C123.615,396.602 119.091,380.997 115.23,367.68C114.592,365.482 112.704,364.151 110.766,364.533C108.827,364.915 107.406,366.898 107.406,369.222C107.406,387.871 107.406,412.737 107.406,434.602C107.406,447.841 111.854,460.538 119.77,469.9C127.687,479.261 138.425,484.521 149.62,484.521C206.217,484.521 306.106,484.521 362.702,484.521C373.898,484.521 384.635,479.261 392.552,469.9C400.469,460.538 404.916,447.841 404.916,434.602C404.916,409.886 404.916,381.334 404.916,362.263Z' style='fill:rgb(251,188,4);'/%3E%3C/g%3E%3Cg id='tag' transform='matrix(-0.505076,-0.505076,0.505076,-0.505076,266.607,485.358)'%3E%3Cpath d='M404,133.8L180,133.8C166.082,133.8 154.8,145.082 154.8,159L154.8,383C154.8,396.908 166.092,408.2 180,408.2C193.908,408.2 205.2,396.908 205.2,383L205.2,184.2C205.2,184.2 404,184.2 404,184.2C417.908,184.2 429.2,172.908 429.2,159C429.2,145.092 417.908,133.8 404,133.8Z' style='fill:rgb(254,247,224);'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.__tagsmith_debugger_open {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  background-size: 32px;
+  background-color: #F1F3F4;
+  border-radius: 50%;
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0px 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0px 5px 8px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 14px 0px;
+  z-index: 2147483648;
+  cursor: pointer;
+}
+
+.__tagsmith_debugger_open:hover {
+  background-color: #FEF7E0;
+}
+
+.__tagsmith_debugger_container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2147483648;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+.__tagsmith_debugger_popup {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 10px;
+  line-height: 1.3;
+  min-width: 335px;
+  max-height: 100%;
+  background: #FFF;
+  border-radius: 8px;
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0px 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0px 5px 8px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 14px 0px;
+}
+
+.__tagsmith_debugger_header {
+  flex: 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #202124;
+  background: #F1F3F4;
+}
+
+.__tagsmith_debugger_header .__tagsmith_debugger_icon {
+  width: 32px;
+  height: 32px;
+}
+
+.__tagsmith_debugger_close {
+  font-family: Material Symbols Outlined;
+  font-size: 18px;
+  text-align: center;
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.__tagsmith_debugger_close:hover {
+  background: #DADCE0;
+}
+
+.__tagsmith_debugger_body {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  font-size: 1.4em;
+}
+
+.__tagsmith_debugger_body > * {
+  padding-bottom: 12px;
+  border-bottom: #9AA0A6 1px dashed;
+}
+
+.__tagsmith_debugger_body > *:last-child {
+  padding-bottom: none;
+  border-bottom: none;
+}
+
+.__tagsmith_debugger_sectionTitle {
+  padding: 6px 0;
+  font-weight: bold;
+}
+
+#__tagsmith_debugger_errors {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.__tagsmith_debugger_error {
+  display: flex;
+  align-items: center;
+  color: #D93025;
+}
+
+.__tagsmith_debugger_error::before {
+  content: "error";
+  margin-right: 6px;
+  font-family: Material Symbols Outlined;
+  font-size: 20px;
+}
+
+#__tagsmith_debugger_featuresForAll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+#__tagsmith_debugger_featuresForAll > * {
+  margin: 0;
+}
+
+.__tagsmith_debugger_table {
+  flex-grow: 1;
+  border-collapse: collapse;
+}
+
+.__tagsmith_debugger_table th,
+.__tagsmith_debugger_table td {
+  white-space: nowrap;
+  padding: 6px 12px;
+}
+
+.__tagsmith_debugger_table td {
+  border: #9AA0A6 1px solid;
+}
+
+.__tagsmith_debugger_testName {
+  width: 64px;
+  font-weight: bold;
+  background: #E8EAED;
+}
+
+.__tagsmith_debugger_variant {
+  position: relative;
+  width: 64px;
+  background: #F8F9FA;
+}
+
+.__tagsmith_debugger_variant:not(.active) {
+  cursor: pointer;
+}
+
+.__tagsmith_debugger_variant::before {
+  position: absolute;
+  top: 0;
+  right: 4px;
+  font-family: Material Symbols Outlined;
+  font-size: 24px;
+}
+
+.__tagsmith_debugger_variant::before {
+  content: "toggle_off";
+  color: #9AA0A6;
+}
+
+.__tagsmith_debugger_variant.active::before,
+.__tagsmith_debugger_variant:hover::before {
+  content: "toggle_on";
+  color: #34A853;
+}
+
+.__tagsmith_debugger_percentage {
+  display: block;
+  width: min-content;
+  margin-bottom: 3px;
+  padding: 0 6px;
+  border-radius: 50vh;
+  font-weight: normal;
+  background: #FFF;
+  border: #9AA0A6 1px solid;
+}
+
+.__tagsmith_debugger_feature,
+.__tagsmith_debugger_logger {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 6px 12px;
+  border-radius: 50vh;
+  color: #FFF;
+}
+
+.__tagsmith_debugger_feature:last-child,
+.__tagsmith_debugger_logger:last-child {
+  margin-right: 0;
+}
+
+.__tagsmith_debugger_feature {
+  background: #34A853;
+}
+
+.__tagsmith_debugger_logger {
+  background: #4285F4;
+}
