@@ -1,0 +1,35 @@
+{
+  "extends": ["eslint:recommended", "google"],
+  "ignorePatterns": ["spec/compiled/**/*"],
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "env": {
+        "browser": true
+      },
+      "parserOptions": {
+        "ecmaVersion": 5,
+        "sourceType": "script"
+      },
+      "rules": {
+        "no-var": "off",
+        "comma-dangle": ["error", "never"]
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "extends": ["plugin:@typescript-eslint/recommended"],
+      "env": {
+        "node": true
+      },
+      "parserOptions": {
+        "sourceType": "module"
+      },
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "rules": {
+        "valid-jsdoc": "off"
+      }
+    }
+  ]
+}

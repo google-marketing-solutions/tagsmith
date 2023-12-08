@@ -1,0 +1,30 @@
+{
+  "name": "tagsmith",
+  "version": "1.0.0",
+  "description": "A framework for web publishers which provides a set of experimental features publishers can choose to test/deploy with minimal to no coding required. All features have A/B testing, logging, and reporting capabilities built-in to ensure a standardized test/release flow.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "build": "ts-node builder.ts",
+    "test": "tsc -p spec && jasmine"
+  },
+  "author": "Google LLC",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/google-closure-compiler": "^0.0.22",
+    "@types/jasmine": "^5.1.4",
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "eslint-config-google": "^0.14.0",
+    "google-closure-compiler": "^20230802.0.0",
+    "jasmine": "^5.1.0",
+    "puppeteer": "^21.5.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  }
+}
