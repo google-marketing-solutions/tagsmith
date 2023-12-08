@@ -1,0 +1,12 @@
+{
+  "spec_dir": "spec/compiled",
+  "spec_files": [
+    "**/*.spec.js"
+  ],
+  "helpers": [
+    "helpers/**/*.js"
+  ],
+  "env": {
+    "random": true
+  }
+}

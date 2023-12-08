@@ -1,0 +1,56 @@
+<!--
+ * Copyright 2023 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+      }
+
+      .article {
+        max-width: 600px;
+      }
+    </style>
+    <% snippet %>
+  </head>
+  <body>
+    <article class="article">
+      <h1>Placeholder Article Title</h1>
+
+      <h2>Introduction</h2>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a urna
+        nisl. Mauris aliquam ligula eu enim tincidunt, in convallis nunc
+        iaculis. Sed placerat tellus sed felis tincidunt, nec interdum felis
+        consectetur. Vivamus in ligula vitae urna eleifend elementum. In hac
+        habitasse platea dictumst. Curabitur euismod, lorem quis hendrerit
+        malesuada, sapien orci egestas diam, vel aliquam felis lectus at ante.
+      </p>
+
+      <h2>Body</h2>
+
+      <% paragraphs %>
+    </article>
+    <% tags %>
+  </body>
+</html>
