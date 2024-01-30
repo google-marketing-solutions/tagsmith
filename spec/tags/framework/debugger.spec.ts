@@ -27,7 +27,7 @@ describe('Debugger', () => {
     });
 
     page.once('dialog', async (dialog) => {
-      expect( dialog.message()).toContain('Can\'t get logger');
+      expect(dialog.message()).toContain('Can\'t get logger');
       await dialog.dismiss();
     });
 
@@ -47,7 +47,7 @@ describe('Debugger', () => {
     });
 
     page.once('dialog', async (dialog) => {
-      expect( dialog.message()).toContain('Event sent');
+      expect(dialog.message()).toContain('Event sent');
       await dialog.dismiss();
     });
 
