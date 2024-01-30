@@ -89,7 +89,11 @@
   height: 32px;
 }
 
-.__tagsmith_debugger_close {
+.__tagsmith_debugger_actions {
+  display: flex;
+}
+
+.__tagsmith_debugger_action_item {
   font-family: Material Symbols Outlined;
   font-size: 18px;
   text-align: center;
@@ -100,8 +104,41 @@
   cursor: pointer;
 }
 
-.__tagsmith_debugger_close:hover {
+.__tagsmith_debugger_action_item:hover {
   background: #DADCE0;
+}
+
+.__tagsmith_debugger_more {
+  position: relative;
+}
+
+.__tagsmith_debugger_menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  overflow: hidden;
+  background: #FFF;
+  border-radius: 8px;
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0px 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0px 5px 8px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 14px 0px;
+}
+
+.__tagsmith_debugger_more:focus > .__tagsmith_debugger_menu {
+  display: block;
+}
+
+.__tagsmith_debugger_menu_item {
+  padding: 6px 12px;
+  font-weight: normal;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.__tagsmith_debugger_menu_item:hover {
+  background: #FEF7E0;
 }
 
 .__tagsmith_debugger_body {

@@ -144,7 +144,32 @@
   var $root = document.getElementById('__tagsmith_debugger');
   var $open = $root.querySelector('.__tagsmith_debugger_open');
   var $container = $root.querySelector('.__tagsmith_debugger_container');
+  var $testSetup = $root.querySelector('#__tagsmith_debugger_test_setup');
   var $close = $root.querySelector('.__tagsmith_debugger_close');
+
+  var testSetupLogger;
+
+  /**
+   * Test framework setup.
+   */
+  var testSetup = function() {
+    var userVariant = w[o].userVariant();
+
+    if (!testSetupLogger) {
+      testSetupLogger = w[o].getLogger('debugger', userVariant);
+    }
+
+    if (testSetupLogger) {
+      var eventName = 'testEventName';
+      var eventValue = 'testEventValue';
+      testSetupLogger(eventName, eventValue);
+      alert('Event sent with name: ' + eventName + ', value: ' + eventValue);
+    } else {
+      alert('Can\'t get logger for debugger.');
+    }
+  };
+
+  $testSetup.addEventListener('click', testSetup);
 
   /**
    * Refresh all UI elements.

@@ -92,7 +92,11 @@
   height: 32px;
 }
 
-.__tagsmith_debugger_close {
+.__tagsmith_debugger_actions {
+  display: flex;
+}
+
+.__tagsmith_debugger_action_item {
   font-family: Material Symbols Outlined;
   font-size: 18px;
   text-align: center;
@@ -103,8 +107,41 @@
   cursor: pointer;
 }
 
-.__tagsmith_debugger_close:hover {
+.__tagsmith_debugger_action_item:hover {
   background: #DADCE0;
+}
+
+.__tagsmith_debugger_more {
+  position: relative;
+}
+
+.__tagsmith_debugger_menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  overflow: hidden;
+  background: #FFF;
+  border-radius: 8px;
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0px 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0px 5px 8px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 14px 0px;
+}
+
+.__tagsmith_debugger_more:focus > .__tagsmith_debugger_menu {
+  display: block;
+}
+
+.__tagsmith_debugger_menu_item {
+  padding: 6px 12px;
+  font-weight: normal;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.__tagsmith_debugger_menu_item:hover {
+  background: #FEF7E0;
 }
 
 .__tagsmith_debugger_body {
@@ -250,7 +287,15 @@
       <div class="__tagsmith_debugger_header">
         <div class="__tagsmith_debugger_icon"></div>
         Tagsmith Debugger
-        <div class="__tagsmith_debugger_close">close</div>
+        <div class="__tagsmith_debugger_actions">
+          <div tabindex="1" class="__tagsmith_debugger_more">
+            <div class="__tagsmith_debugger_action_item">more_horiz</div>
+            <div class="__tagsmith_debugger_menu">
+              <div id="__tagsmith_debugger_test_setup" class="__tagsmith_debugger_menu_item">Test setup</div>
+            </div>
+          </div>
+          <div class="__tagsmith_debugger_action_item __tagsmith_debugger_close">close</div>
+        </div>
       </div>
       <div class="__tagsmith_debugger_body">
         <div>
@@ -407,7 +452,32 @@
   var $root = document.getElementById('__tagsmith_debugger');
   var $open = $root.querySelector('.__tagsmith_debugger_open');
   var $container = $root.querySelector('.__tagsmith_debugger_container');
+  var $testSetup = $root.querySelector('#__tagsmith_debugger_test_setup');
   var $close = $root.querySelector('.__tagsmith_debugger_close');
+
+  var testSetupLogger;
+
+  /**
+   * Test framework setup.
+   */
+  var testSetup = function() {
+    var userVariant = w[o].userVariant();
+
+    if (!testSetupLogger) {
+      testSetupLogger = w[o].getLogger('debugger', userVariant);
+    }
+
+    if (testSetupLogger) {
+      var eventName = 'testEventName';
+      var eventValue = 'testEventValue';
+      testSetupLogger(eventName, eventValue);
+      alert('Event sent with name: ' + eventName + ', value: ' + eventValue);
+    } else {
+      alert('Can\'t get logger for debugger.');
+    }
+  };
+
+  $testSetup.addEventListener('click', testSetup);
 
   /**
    * Refresh all UI elements.
