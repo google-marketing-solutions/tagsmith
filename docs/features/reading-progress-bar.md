@@ -4,15 +4,11 @@ Feature ID: `readingProgressBar`
 
 ## What it is?
 
-Add a reading progress bar to your pages to encourage visitors to scroll further down.
+Adds a reading progress bar to your pages to encourage visitors to scroll further down.
 
 ## What it fits for?
 
 All article pages.
-
-## Potential impacts
-
-Higher **reading completion rate**, higher **ad impressions**, higher **ad revenue**.
 
 ## Setup
 
@@ -20,13 +16,13 @@ Higher **reading completion rate**, higher **ad impressions**, higher **ad reven
 
 - **Name**: `tagsmith.abVariant.readingProgressBar`
   - **Type**: `Constant`
-  - **Value**: Any available experiment variant(e.g. `test1_exp1`)
+  - **Value**: Any available experiment variant (e.g. `test1_exp1`)
 
 2. In Google Tag Manager, add following trigger(s):
 
 - **Name**: `Tagsmith - Reading Progress Bar`
   - **Type**: `Page View - DOM Ready`
-  - **Fires on**: `Some DOM Ready Events`, choose `Page Path` or `Page URL`(both are built-in variables), and set appropriate condition & value to match your article pages
+  - **Fires on**: `Some DOM Ready Events`, choose `Page Path` or `Page URL` (both are built-in variables), and set appropriate condition & value to match your article pages
 
 3. In Google Tag Manager, add following tag(s):
 
