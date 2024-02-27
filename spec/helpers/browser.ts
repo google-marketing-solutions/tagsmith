@@ -74,6 +74,7 @@ export async function close() {
  *          Default `5`
  */
 export async function generatePage(args: {
+  injection?: { beforeSnippet?: string };
   variantByFeature?: { [feature: string]: string };
   variables?: { [key: string]: string };
   frameworks?: (keyof typeof FRAMEWORK_TAG_MAP)[];
@@ -129,6 +130,10 @@ export async function generatePage(args: {
   }
 
   const html = String(TEMPLATE)
+      .replace(
+          /<%\s+injection.beforeSnippet\s+%>/,
+          args.injection?.beforeSnippet ?? ''
+      )
       .replace(
           /<%\s+paragraphs\s+%>/,
           PARAGRAPH_PLACEHOLDER.repeat(args.paragraphs)
