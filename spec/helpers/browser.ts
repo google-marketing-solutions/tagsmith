@@ -75,6 +75,7 @@ export async function close() {
  */
 export async function generatePage(args: {
   variantByFeature?: { [feature: string]: string };
+  variables?: { [key: string]: string };
   frameworks?: (keyof typeof FRAMEWORK_TAG_MAP)[];
   forceAbFactor?: number;
   paragraphs?: number;
@@ -85,6 +86,10 @@ export async function generatePage(args: {
 
   if (args.variantByFeature === undefined) {
     args.variantByFeature = {};
+  }
+
+  if (args.variables === undefined) {
+    args.variables = {};
   }
 
   if (args.frameworks === undefined) {
@@ -114,12 +119,21 @@ export async function generatePage(args: {
     tags.push(tag);
   }
 
+  let tagsHtml = tags.join('\n');
+
+  const variableKeys = Object.keys(args.variables);
+  for (let i = 0; i < variableKeys.length; i++) {
+    const key = variableKeys[i];
+    const value = args.variables[key];
+    tagsHtml = tagsHtml.replaceAll(`{{${key}}}`, value);
+  }
+
   const html = String(TEMPLATE)
       .replace(
           /<%\s+paragraphs\s+%>/,
           PARAGRAPH_PLACEHOLDER.repeat(args.paragraphs)
       )
-      .replace(/<%\s+tags\s+%>/, tags.join('\n'));
+      .replace(/<%\s+tags\s+%>/, tagsHtml);
 
   const page = await browser.newPage();
 
