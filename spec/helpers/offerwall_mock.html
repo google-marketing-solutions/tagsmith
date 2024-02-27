@@ -1,0 +1,53 @@
+<div class="fc-message-root">
+  <div class="fc-monetization-dialog-container">
+    <div class="fc-dialog-overlay"></div>
+    <div class="fc-monetization-dialog fc-dialog" role="dialog" tabindex="0"
+      aria-label="Unlock more content. Take action to continue accessing the content on this site. View a short ad, Site-wide access for 12 hours. Select your interests to personalize your experience, Site-wide access for 12 hours. ">
+      <div class="fc-dialog-content">
+        <div class="fc-header">
+          <h2 class="fc-header-image-container">
+            <img class="fc-header-image" alt="Welcome" src="https://placehold.co/300x100" />
+          </h2>
+        </div>
+        <div class="fc-dialog-headline">
+          <h1 class="fc-dialog-headline-text">headline text</h1>
+          <div class="fc-dialog-body">
+            <p class="fc-dialog-body-text">body text</p>
+          </div>
+        </div>
+        <div class="fc-list-container">
+          <button role="button" class="fc-list-item-button fc-rewarded-ad-button"
+            onclick="setTimeout(() => document.querySelector('.fc-thank-you-snackbar').style.display = '', 200)">
+            <div class="fc-list-item-text-container">
+              <span class="fc-list-item-text fc-rewarded-ad-option-text">rewarded ad option text</span>
+              <div class="fc-list-item-subtext-container">
+                <div class="fc-list-item-subtext fc-rewarded-ad-option-subtext">
+                  rewarded ad option subtext
+                </div>
+              </div>
+            </div>
+            <div class="fc-list-item-image-container">
+              <i class="fc-choice-icon fc-rewarded-icon" translate="no">play_circle_filled</i>
+            </div>
+          </button><button role="button" class="fc-list-item-button fc-user-interests-button"
+            onclick="setTimeout(() => document.querySelector('.fc-thank-you-snackbar').style.display = '', 200)">
+            <div class="fc-list-item-text-container">
+              <span class="fc-list-item-text fc-user-interests-option-text">user interests option text</span>
+              <div class="fc-list-item-subtext-container">
+                <div class="fc-list-item-subtext fc-user-interests-option-subtext">
+                  user interests option subtext
+                </div>
+              </div>
+            </div>
+            <div class="fc-list-item-image-container">
+              <i class="fc-choice-icon fc-interests-icon" translate="no">interests</i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-thank-you-snackbar fc-snackbar" role="status" aria-live="polite" style="display: none !important">
+    Thanks for your support!
+  </div>
+</div>
