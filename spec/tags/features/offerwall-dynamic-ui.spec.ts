@@ -26,13 +26,13 @@ const OFFERWALL_MOCK = fs
  * Dynamically inject offerwall UI to document.
  * @param {Page} page
  */
-const mockOfferwall = async function(page: Page) {
+async function mockOfferwall(page: Page) {
   await page.evaluate(
       'document.body.insertAdjacentHTML(\'beforeend\', `' +
       OFFERWALL_MOCK.replaceAll('`', '\\`') +
       '`)'
   );
-};
+}
 
 describe('Offerwall Dynamic UI', () => {
   beforeEach(browser.launch);

@@ -77,7 +77,7 @@ export async function generatePage(args: {
   injection?: { beforeSnippet?: string };
   variantByFeature?: { [feature: string]: string };
   variables?: { [key: string]: string };
-  frameworks?: (keyof typeof FRAMEWORK_TAG_MAP)[];
+  frameworks?: Array<keyof typeof FRAMEWORK_TAG_MAP>;
   forceAbFactor?: number;
   paragraphs?: number;
 }): Promise<Page> {
