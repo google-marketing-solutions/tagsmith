@@ -79,7 +79,7 @@ describe('Offerwall Dynamic UI', () => {
     ).toEqual('rewarded ad option subtext');
   });
 
-  it('should modify offerwall UI', async () => {
+  it('should modify UI when MutationObserver is avaiable', async () => {
     const page = await browser.generatePage({
       variantByFeature: {'offerwall-dynamic-ui': 'test1_exp1'},
       variables: {
