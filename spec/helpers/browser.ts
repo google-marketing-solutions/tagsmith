@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Google LLC
+ * Copyright 2024 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,8 +74,10 @@ export async function close() {
  *          Default `5`
  */
 export async function generatePage(args: {
+  injection?: { beforeSnippet?: string };
   variantByFeature?: { [feature: string]: string };
-  frameworks?: (keyof typeof FRAMEWORK_TAG_MAP)[];
+  variables?: { [key: string]: string };
+  frameworks?: Array<keyof typeof FRAMEWORK_TAG_MAP>;
   forceAbFactor?: number;
   paragraphs?: number;
 }): Promise<Page> {
@@ -85,6 +87,10 @@ export async function generatePage(args: {
 
   if (args.variantByFeature === undefined) {
     args.variantByFeature = {};
+  }
+
+  if (args.variables === undefined) {
+    args.variables = {};
   }
 
   if (args.frameworks === undefined) {
@@ -114,12 +120,25 @@ export async function generatePage(args: {
     tags.push(tag);
   }
 
+  let tagsHtml = tags.join('\n');
+
+  const variableKeys = Object.keys(args.variables);
+  for (let i = 0; i < variableKeys.length; i++) {
+    const key = variableKeys[i];
+    const value = args.variables[key];
+    tagsHtml = tagsHtml.replaceAll(`{{${key}}}`, value);
+  }
+
   const html = String(TEMPLATE)
+      .replace(
+          /<%\s+injection.beforeSnippet\s+%>/,
+          args.injection?.beforeSnippet ?? ''
+      )
       .replace(
           /<%\s+paragraphs\s+%>/,
           PARAGRAPH_PLACEHOLDER.repeat(args.paragraphs)
       )
-      .replace(/<%\s+tags\s+%>/, tags.join('\n'));
+      .replace(/<%\s+tags\s+%>/, tagsHtml);
 
   const page = await browser.newPage();
 
