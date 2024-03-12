@@ -1,0 +1,45 @@
+<!--
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+
+<!-- Tagsmith, Daily quiz, v1.0.0 -->
+<% style %>
+<div id="__tagsmith_dailyQuiz" style="display:none;">
+  <div class="__tagsmith_dailyQuiz_open">
+    <div class="__tagsmith_dailyQuiz_icon"></div>
+    デイリークイズに挑戦！
+    <div class="__tagsmith_dailyQuiz_dismiss"></div>
+  </div>
+  <div class="__tagsmith_dailyQuiz_container">
+    <div class="__tagsmith_dailyQuiz_popup">
+      <div class="__tagsmith_dailyQuiz_header">
+        <img class="__tagsmith_dailyQuiz_logo" alt="Daily quiz" src="{{tagsmith.dailyQuiz.logoUrl}}" />
+        <div class="__tagsmith_dailyQuiz_title">
+          <div class="__tagsmith_dailyQuiz_icon"></div>
+          デイリークイズ
+        </div>
+      </div>
+      <div name="question" class="__tagsmith_dailyQuiz_question"></div>
+      <div name="optionList"></div>
+      <div class="__tagsmith_dailyQuiz_hint">
+        答えは記事の中から：<a name="articleLink"></a>
+      </div>
+      <div class="__tagsmith_dailyQuiz_close">
+        <button name="close">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% script %>
