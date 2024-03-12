@@ -16,7 +16,7 @@
 
 import * as browser from '../../helpers/browser';
 
-describe('Reading Progress Bar', () => {
+describe('Reading progress bar', () => {
   beforeEach(browser.launch);
   afterEach(browser.close);
 

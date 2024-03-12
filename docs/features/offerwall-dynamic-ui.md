@@ -1,4 +1,4 @@
-# Offerwall Dynamic UI
+# Offerwall dynamic UI
 
 Feature ID: `offerwallDynamicUi`
 
@@ -32,18 +32,18 @@ Pages where offerwall is enabled.
 
 2. In Google Tag Manager, add following trigger(s):
 
-- **Name**: `Tagsmith - Offerwall Dynamic UI`
+- **Name**: `Tagsmith - Offerwall dynamic UI`
   - **Type**: `Page View - DOM Ready`
   - **Fires on**: `Some DOM Ready Events`, choose `Page Path` or `Page URL` (both are built-in variables), and set appropriate condition & value to match the pages where offerwall is enabled. (You can also choose `All DOM Ready Events` if offerwall is enabled in all pages).
 
 3. In Google Tag Manager, add following tag(s):
 
-- **Name**: `Tagsmith - Offerwall Dynamic UI`
+- **Name**: `Tagsmith - Offerwall dynamic UI`
   - **Type**: `Custom HTML`
   - **HTML**: Copy/paste from [this file](https://raw.githubusercontent.com/google-marketing-solutions/tagsmith/main/dist/tags/features/offerwall-dynamic-ui.html)
   - **Advanced Settings**
     - **Tag firing options**: `Once per page`
-  - **Firing Triggers**: `Tagsmith - Offerwall Dynamic UI`
+  - **Firing Triggers**: `Tagsmith - Offerwall dynamic UI`
 
 4. Preview to see if everything works
 5. Submit & publish

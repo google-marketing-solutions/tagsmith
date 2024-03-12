@@ -20,18 +20,18 @@ All article pages.
 
 2. In Google Tag Manager, add following trigger(s):
 
-- **Name**: `Tagsmith - Reading Progress Bar`
+- **Name**: `Tagsmith - Reading progress bar`
   - **Type**: `Page View - DOM Ready`
   - **Fires on**: `Some DOM Ready Events`, choose `Page Path` or `Page URL` (both are built-in variables), and set appropriate condition & value to match your article pages
 
 3. In Google Tag Manager, add following tag(s):
 
-- **Name**: `Tagsmith - Reading Progress Bar`
+- **Name**: `Tagsmith - Reading progress bar`
   - **Type**: `Custom HTML`
   - **HTML**: Copy/paste from [this file](https://raw.githubusercontent.com/google-marketing-solutions/tagsmith/main/dist/tags/features/reading-progress-bar.html)
   - **Advanced Settings**
     - **Tag firing options**: `Once per page`
-  - **Firing Triggers**: `Tagsmith - Reading Progress Bar`
+  - **Firing Triggers**: `Tagsmith - Reading progress bar`
 
 4. Preview to see if everything works
 5. Submit & publish

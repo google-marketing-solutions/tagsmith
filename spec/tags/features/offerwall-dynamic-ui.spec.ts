@@ -34,7 +34,7 @@ async function mockOfferwall(page: Page) {
   );
 }
 
-describe('Offerwall Dynamic UI', () => {
+describe('Offerwall dynamic UI', () => {
   beforeEach(browser.launch);
   afterEach(browser.close);
 
