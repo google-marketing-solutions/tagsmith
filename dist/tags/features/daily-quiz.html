@@ -15,7 +15,8 @@
  -->
 
 <!-- Tagsmith, Daily quiz, v1.0.0 -->
-<style>
+<div id="__tagsmith_dailyQuiz" style="display:none;">
+  <style>
 #__tagsmith_dailyQuiz {
   font-family: Helvetica Neue, Arial, sans-serif;
   font-size: 10pt;
@@ -224,7 +225,6 @@
   text-align: center;
 }
 </style>
-<div id="__tagsmith_dailyQuiz" style="display:none;">
   <div class="__tagsmith_dailyQuiz_open">
     <div class="__tagsmith_dailyQuiz_icon"></div>
     デイリークイズに挑戦！
@@ -249,8 +249,7 @@
       </div>
     </div>
   </div>
-</div>
-<script>
+  <script>
 (function() {
   /** @typedef {!{
    *   question: string,
@@ -466,3 +465,4 @@
   logger && logger('prompt.' + answerStatus());
 })();
 </script>
+</div>
