@@ -59,4 +59,43 @@ describe('Reading progress bar', () => {
       },
     ]);
   });
+
+  it('should destroy root and no-logging for irrelevant variant', async () => {
+    const page = await browser.generatePage({
+      variantByFeature: {'reading-progress-bar': 'test1_exp1'},
+      forceAbFactor: 0.99,
+      paragraphs: 20,
+    });
+
+    const $root = await page.$('#__tagsmith_readingProgressBar');
+    expect($root).toBeNull();
+
+    await page.evaluate(`window.scrollTo(0, 10000)`);
+    await page.evaluate(`new Promise((resolve) => setTimeout(resolve, 500))`);
+
+    expect(await page.evaluate(`window.dataLayer.shift()`)).toBeUndefined();
+  });
+
+  it('should destroy container but still log for control variant', async () => {
+    const page = await browser.generatePage({
+      variantByFeature: {'reading-progress-bar': 'test1_exp1'},
+      forceAbFactor: 0.01,
+      paragraphs: 20,
+    });
+
+    const $container = await page.$('#__tagsmith_readingProgressBar_container');
+    expect($container).toBeNull();
+
+    await page.evaluate(`window.scrollTo(0, 10000)`);
+    await page.evaluate(`new Promise((resolve) => setTimeout(resolve, 500))`);
+
+    expect(await page.evaluate(`window.dataLayer`)).toEqual([
+      {
+        event: 'tagsmith_event',
+        userVariant: 'test1_con',
+        id: 'readingProgressBar.percentage',
+        value: 90,
+      },
+    ]);
+  });
 });

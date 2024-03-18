@@ -192,4 +192,49 @@ describe('Offerwall dynamic UI', () => {
       id: 'offerwallDynamicUi.complete',
     });
   });
+
+  it('should destroy root and no-logging for irrelevant variant', async () => {
+    const page = await browser.generatePage({
+      variantByFeature: {'offerwall-dynamic-ui': 'test1_exp1'},
+      variables: {
+        'tagsmith.offerwallDynamicUi.headlineText': 'mod headline',
+        'tagsmith.offerwallDynamicUi.bodyText': 'mod body',
+        'tagsmith.offerwallDynamicUi.rewardedAdOptionText':
+          'mod rewarded ad option text',
+        'tagsmith.offerwallDynamicUi.rewardedAdOptionSubtext':
+          'mod rewarded ad option subtext',
+      },
+      forceAbFactor: 0.99,
+    });
+
+    const $root = await page.$('#__tagsmith_offerwallDynamicUi');
+    expect($root).toBeNull();
+
+    await mockOfferwall(page);
+
+    expect(await page.evaluate(`window.dataLayer.shift()`)).toBeUndefined();
+  });
+
+  it('should still log for control variant', async () => {
+    const page = await browser.generatePage({
+      variantByFeature: {'offerwall-dynamic-ui': 'test1_exp1'},
+      variables: {
+        'tagsmith.offerwallDynamicUi.headlineText': 'mod headline',
+        'tagsmith.offerwallDynamicUi.bodyText': 'mod body',
+        'tagsmith.offerwallDynamicUi.rewardedAdOptionText':
+          'mod rewarded ad option text',
+        'tagsmith.offerwallDynamicUi.rewardedAdOptionSubtext':
+          'mod rewarded ad option subtext',
+      },
+      forceAbFactor: 0.01,
+    });
+
+    await mockOfferwall(page);
+
+    expect(await page.evaluate(`window.dataLayer.shift()`)).toEqual({
+      event: 'tagsmith_event',
+      userVariant: 'test1_con',
+      id: 'offerwallDynamicUi.prompt',
+    });
+  });
 });

@@ -15,7 +15,9 @@
  -->
 
 <!-- Tagsmith, Reading progress bar, v1.0.0 -->
-<style>
+<div id="__tagsmith_readingProgressBar">
+  <div id="__tagsmith_readingProgressBar_container">
+    <style>
 #__tagsmith_readingProgressBar_container {
   position: fixed;
   top: 0;
@@ -35,10 +37,9 @@
   transition: width 0.2s ease-out;
 }
 </style>
-<div id="__tagsmith_readingProgressBar_container">
-  <div id="__tagsmith_readingProgressBar_progress"></div>
-</div>
-<script>
+    <div id="__tagsmith_readingProgressBar_progress"></div>
+  </div>
+  <script>
 (function() {
   // #region Customize configs
   /**
@@ -65,6 +66,13 @@
   var enabled = window.__tagsmith.enable(FEATURE_ID, variant);
   var logger = window.__tagsmith.getLogger(FEATURE_ID, variant);
 
+  var $root = document.getElementById('__tagsmith_readingProgressBar');
+
+  if (!enabled && !logger) {
+    $root.parentNode.removeChild($root);
+    return;
+  }
+
   var maxScrollTop = 0;
   setMaxScrollTop();
   window.addEventListener('resize', setMaxScrollTop);
@@ -79,11 +87,6 @@
         '__tagsmith_readingProgressBar_container'
     );
     $ele.parentNode.removeChild($ele);
-
-    // Exit early if logging is not enabled
-    if (!logger) {
-      return;
-    }
   }
 
   var loggedPercentage = {};
@@ -118,3 +121,4 @@
   window.requestAnimationFrame(update);
 })();
 </script>
+</div>
