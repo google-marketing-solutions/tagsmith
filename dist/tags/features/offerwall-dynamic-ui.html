@@ -15,7 +15,8 @@
  -->
 
 <!-- Tagsmith, Offerwall dynamic UI, v1.0.0 -->
-<script>
+<div id="__tagsmith_offerwallDynamicUi">
+  <script>
 (function() {
   // #region Customize configs
   var TEXT_BY_SELECTOR = {
@@ -28,14 +29,17 @@
   };
   // #endregion
 
-  if (!('MutationObserver' in window)) {
-    return;
-  }
-
   var FEATURE_ID = 'offerwallDynamicUi';
   var variant = '{{tagsmith.abVariant.offerwallDynamicUi}}';
   var enabled = window.__tagsmith.enable(FEATURE_ID, variant);
   var logger = window.__tagsmith.getLogger(FEATURE_ID, variant);
+
+  var $root = document.getElementById('__tagsmith_offerwallDynamicUi');
+
+  if ((!enabled && !logger) || !('MutationObserver' in window)) {
+    $root.parentNode.removeChild($root);
+    return;
+  }
 
   var observer = new MutationObserver(function(mutationList) {
     for (var i = 0; i < mutationList.length; i++) {
@@ -124,3 +128,4 @@
   }
 })();
 </script>
+</div>

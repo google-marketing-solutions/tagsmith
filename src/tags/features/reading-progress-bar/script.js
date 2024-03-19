@@ -40,6 +40,13 @@
   var enabled = window.__tagsmith.enable(FEATURE_ID, variant);
   var logger = window.__tagsmith.getLogger(FEATURE_ID, variant);
 
+  var $root = document.getElementById('__tagsmith_readingProgressBar');
+
+  if (!enabled && !logger) {
+    $root.parentNode.removeChild($root);
+    return;
+  }
+
   var maxScrollTop = 0;
   setMaxScrollTop();
   window.addEventListener('resize', setMaxScrollTop);
@@ -54,11 +61,6 @@
         '__tagsmith_readingProgressBar_container'
     );
     $ele.parentNode.removeChild($ele);
-
-    // Exit early if logging is not enabled
-    if (!logger) {
-      return;
-    }
   }
 
   var loggedPercentage = {};

@@ -306,13 +306,13 @@
   };
 
   $open.addEventListener('click', function() {
-    $container.style.visibility = 'visible';
+    $container.style.display = 'flex';
 
     refresh();
   });
 
   $close.addEventListener('click', function() {
-    $container.style.visibility = 'hidden';
+    $container.style.display = 'none';
   });
 
   // #endregion

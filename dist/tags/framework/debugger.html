@@ -52,10 +52,9 @@
   z-index: 2147483648;
   background: rgba(0, 0, 0, 0.5);
   padding: 20px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
-  visibility: hidden;
 }
 
 .__tagsmith_debugger_popup {
@@ -614,13 +613,13 @@
   };
 
   $open.addEventListener('click', function() {
-    $container.style.visibility = 'visible';
+    $container.style.display = 'flex';
 
     refresh();
   });
 
   $close.addEventListener('click', function() {
-    $container.style.visibility = 'hidden';
+    $container.style.display = 'none';
   });
 
   // #endregion
