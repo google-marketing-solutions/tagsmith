@@ -15,7 +15,7 @@
  */
 
 import * as fs from 'fs';
-import puppeteer, {Browser, Page} from 'puppeteer';
+import puppeteer, {Browser, HTTPRequest, Page, PageEvent} from 'puppeteer';
 
 const SNIPPET = fs.readFileSync('dist/snippet.html').toString();
 const TEMPLATE = fs
@@ -80,6 +80,7 @@ export async function generatePage(args: {
   frameworks?: Array<keyof typeof FRAMEWORK_TAG_MAP>;
   forceAbFactor?: number;
   paragraphs?: number;
+  urlHash?: string;
 }): Promise<Page> {
   if (!browser) {
     throw new Error('Run `await prepare();` before any test.');
@@ -99,6 +100,10 @@ export async function generatePage(args: {
 
   if (args.paragraphs === undefined) {
     args.paragraphs = 5;
+  }
+
+  if (args.urlHash === undefined) {
+    args.urlHash = '';
   }
 
   const tags: string[] = [];
@@ -143,7 +148,7 @@ export async function generatePage(args: {
   const page = await browser.newPage();
 
   // Open an actual file so features that require URL(e.g. localStorage) works.
-  await page.goto(`file://${process.cwd()}/spec/empty.html`);
+  await page.goto(`file://${process.cwd()}/spec/empty.html#${args.urlHash}`);
 
   if (args.forceAbFactor !== undefined) {
     await page.evaluate(
