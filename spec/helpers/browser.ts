@@ -160,3 +160,30 @@ export async function generatePage(args: {
 
   return page;
 }
+
+/**
+ * Hook page navigation without navigating away from the page.
+ * @param page Page object
+ * @param trigger Function to trigger navigation
+ * @param onRequest Called when navigation happens
+ */
+export async function navigationHook(
+    page: Page,
+    trigger: () => Promise<void>,
+    onRequest?: (request: HTTPRequest) => Promise<void>
+) {
+  const handler = async (request: HTTPRequest) => {
+    if (onRequest) {
+      await onRequest(request);
+    }
+    request.abort('aborted');
+  };
+
+  await page.setRequestInterception(true);
+  page.on(PageEvent.Request, handler);
+
+  await trigger();
+
+  page.off(PageEvent.Request, handler);
+  await page.setRequestInterception(false);
+}
