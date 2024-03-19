@@ -41,7 +41,7 @@ describe('Offerwall dynamic UI', () => {
   it('should do nothing if MutationObserver isn\'t avaiable', async () => {
     const page = await browser.generatePage({
       injection: {
-        beforeSnippet: '<script>window.MutationObserver = undefined</script>',
+        beforeSnippet: '<script>delete window.MutationObserver</script>',
       },
       variantByFeature: {'offerwall-dynamic-ui': 'test1_exp1'},
       variables: {
@@ -54,6 +54,9 @@ describe('Offerwall dynamic UI', () => {
       },
       forceAbFactor: 0.07,
     });
+
+    const $root = await page.$('#__tagsmith_offerwallDynamicUi');
+    expect($root).toBeNull();
 
     await mockOfferwall(page);
 
