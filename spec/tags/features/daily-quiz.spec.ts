@@ -1003,7 +1003,7 @@ describe('Daily quiz', () => {
     // Correct answer not highlighted
     expect(
         await (
-          await page.$('.__tagsmith_dailyQuiz_option[data-option="2"]')
+          await page.$('.__tagsmith_dailyQuiz_option[data-option="3"]')
         )?.evaluate((ele) => ele.className)
     ).not.toMatch(/\b__tagsmith_dailyQuiz_answer\b/);
   });
