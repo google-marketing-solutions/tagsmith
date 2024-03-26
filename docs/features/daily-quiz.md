@@ -43,6 +43,9 @@ All websites.
   - **Firing Triggers**: `Tagsmith - Daily quiz`
 
 4. Preview to see if everything works
+
+- To test quiz for a specific date, append `#__tagsmith.dailyQuiz.date=20240120` (change number to the date you want to test) to the end of your URL.
+
 5. Submit & publish
 
 ## `tagsmith.dailyQuiz.quizConfigs` format
