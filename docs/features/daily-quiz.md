@@ -54,17 +54,17 @@ Basic format:
 ```js
 function() {
   return {
-    '{Date range}': [
+    "{Date range}": [
       {
-        question: '{Question text}',
+        question: "{Question text}",
         options: [
-          '{Option 1 text}',
-          '{Option 2 text}',
-          '{Option 3 text}',
-          '{Option 4 text}'
+          "{Option 1 text}",
+          "{Option 2 text}",
+          "{Option 3 text}",
+          "{Option 4 text}"
         ],
         answer: {Correct answer number},
-        link: '{Link for reference}'
+        link: "{Link for reference}"
       }
     ]
   };
@@ -76,69 +76,69 @@ function() {
   - Date range example 1: `20240120-20240126` (Jan 20th, 2024 to Jan 26th, 2024)
   - Date range example 2: `20240120-` (Jan 20th, 2024 to the end of time)
 - `{Question text}`: The question.
-  - If you have `'` in the text, replace it with `\'`
+  - If you have `"` in the text, replace it with `\"`
   - Don't include line breaks.
 - `{Option 1/2/3… text}`: The options.
   - You can have as many/less options as needed.
-  - If you have `'` in the text, replace it with `\'`
+  - If you have `"` in the text, replace it with `\"`
   - Don't include line breaks.
 - `{Correct answer number}`: Correct answer's number (starting from 1).
   - Example, if the third option is correct, enter `3`.
-  - Note that there **AREN'T** `'`s surrounding the number.
+  - Note that there **AREN'T** `"`s surrounding the number.
 - `{Link for reference}`: URL to show below the quiz.
   - Typically, this should be the page where user can find answer to the quiz.
-  - If you have `'` in the URL, replace it with `\'`
+  - If you have `"` in the URL, replace it with `\"`
 
 For easier operation, you can input multiple date range blocks and quiz blocks like below. (Please pay attention to the `,` between each date range and quiz.)
 ```js
 function() {
   return {
-    '20240120': [
+    "20240120": [
       {
-        question: 'Question 20240120',
+        question: "Question 20240120",
         options: [
-          'Option 1',
-          'Option 2',
-          'Option 3',
-          'Option 4'
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
         ],
         answer: 2,
-        link: 'https://example.com/20240120'
+        link: "https://example.com/20240120"
       }
     ],
-    '20240121-20240127': [
+    "20240121-20240127": [
       {
-        question: 'Question 1',
+        question: "Question 1",
         options: [
-          'Option 1',
-          'Option 2',
-          'Option 3',
-          'Option 4'
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
         ],
         answer: 3,
-        link: 'https://example.com/1'
+        link: "https://example.com/1"
       },
       {
-        question: 'Question 2',
+        question: "Question 2",
         options: [
-          'Option 1',
-          'Option 2',
-          'Option 3',
-          'Option 4'
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
         ],
         answer: 1,
-        link: 'https://example.com/2'
+        link: "https://example.com/2"
       },
       {
-        question: 'Question 3',
+        question: "Question 3",
         options: [
-          'Option 1',
-          'Option 2',
-          'Option 3',
-          'Option 4'
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
         ],
         answer: 4,
-        link: 'https://example.com/3'
+        link: "https://example.com/3"
       }
     ]
   };
