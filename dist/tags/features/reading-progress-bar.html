@@ -20,11 +20,16 @@
     <style>
 #__tagsmith_readingProgressBar_container {
   position: fixed;
+  /* #region Customize progress bar z-index */
+  z-index: 10000;
+  /* #endregion */
   top: 0;
   left: 0;
   right: 0;
+  /* #region Customize progress bar height and background color */
   height: 5px;
   background-color: #DDD;
+  /* #endregion */
 }
 
 #__tagsmith_readingProgressBar_progress {
@@ -33,7 +38,9 @@
   left: 0;
   height: 100%;
   width: 0;
+  /* #region Customize progress bar foreground color */
   background-color: #0AF;
+  /* #endregion */
   transition: width 0.2s ease-out;
 }
 </style>
@@ -44,7 +51,15 @@
   // #region Customize configs
   /**
    * Set the maximum scroll top position to be used when calculating reading
-   * percentage. Change this as needed.
+   * percentage.
+   * Default logic: Calculate from page height.
+   * Customize example: Calculate from article div:
+   *   var setMaxScrollTop = function() {
+   *     var $article = document.querySelector('article');
+   *     var contentHeight = $article.offsetTop + $article.offsetHeight;
+   *     var viewportHeight = window.innerHeight;
+   *     maxScrollTop = contentHeight - viewportHeight;
+   *   };
    */
   var setMaxScrollTop = function() {
     var contentHeight = document.body.clientHeight;
