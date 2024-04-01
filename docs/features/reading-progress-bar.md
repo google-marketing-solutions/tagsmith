@@ -29,6 +29,7 @@ All article pages.
 - **Name**: `Tagsmith - Reading progress bar`
   - **Type**: `Custom HTML`
   - **HTML**: Copy/paste from [this file](https://raw.githubusercontent.com/google-marketing-solutions/tagsmith/main/dist/tags/features/reading-progress-bar.html)
+    - To customize progress bar's position/color and/or logic, search for `#region Customize` in the HTML above.
   - **Advanced Settings**
     - **Tag firing options**: `Once per page`
   - **Firing Triggers**: `Tagsmith - Reading progress bar`

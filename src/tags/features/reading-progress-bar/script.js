@@ -18,7 +18,15 @@
   // #region Customize configs
   /**
    * Set the maximum scroll top position to be used when calculating reading
-   * percentage. Change this as needed.
+   * percentage.
+   * Default logic: Calculate from page height.
+   * Customize example: Calculate from article div:
+   *   var setMaxScrollTop = function() {
+   *     var $article = document.querySelector('article');
+   *     var contentHeight = $article.offsetTop + $article.offsetHeight;
+   *     var viewportHeight = window.innerHeight;
+   *     maxScrollTop = contentHeight - viewportHeight;
+   *   };
    */
   var setMaxScrollTop = function() {
     var contentHeight = document.body.clientHeight;
