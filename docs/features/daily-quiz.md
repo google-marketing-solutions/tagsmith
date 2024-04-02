@@ -22,7 +22,7 @@ All websites.
   - **Value**: Logo URL to show in the quiz popup. (Set to `_` if you want to hide the logo)
 - **Name**: `tagsmith.dailyQuiz.quizConfigs`
   - **Type**: `Custom JavaScript`
-  - **Value**: Quiz configs. See [blow](#tagsmithdailyquizquizconfigs-format) for details.
+  - **Value**: Quiz configs. See [below](#tagsmithdailyquizquizconfigs-format) for details.
 
 2. In Google Tag Manager, add following trigger(s):
 
