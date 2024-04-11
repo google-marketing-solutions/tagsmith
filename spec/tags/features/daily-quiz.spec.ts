@@ -389,6 +389,7 @@ describe('Daily quiz', () => {
 
   /**
    * Test if the right question is rendered for `date`.
+   * @returns {Page}
    */
   async function testDateRange(
       quizConfigs: { [dateRange: string]: Quiz[] },
@@ -415,6 +416,8 @@ describe('Daily quiz', () => {
     } else {
       expect(await page.$('#__tagsmith_dailyQuiz')).toBeNull();
     }
+
+    return page;
   }
 
   it('should loop questions in date range', async () => {
@@ -527,6 +530,26 @@ describe('Daily quiz', () => {
 
     // Outside date range
     await testDateRange(quizConfigs, '99999911', null);
+  });
+
+  fit('should report error for invalid date range', async () => {
+    const quizConfigs = {
+      '２０２４０１０１-２０２４０１１０': [
+        {
+          question: 'Question',
+          options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+          answer: 2,
+          link: 'https://sample.com',
+        },
+      ],
+    };
+
+    const page = await testDateRange(quizConfigs, '20240102', null);
+
+    const errors = await browser.getErrorsFromDebugger(page);
+    expect(errors.pop()).toEqual(
+        '"dailyQuiz": Invalid date range: ２０２４０１０１-２０２４０１１０'
+    );
   });
 
   it('should open/close popup', async () => {

@@ -30,6 +30,7 @@
   var variant = '{{tagsmith.abVariant.dailyQuiz}}';
   var enabled = window.__tagsmith.enable(FEATURE_ID, variant);
   var logger = window.__tagsmith.getLogger(FEATURE_ID, variant);
+  var errorReporter = window.__tagsmith.__getErrorReporter(FEATURE_ID);
 
   var LOCAL_STORAGE_KEY = '__tagsmith_dailyQuiz';
 
@@ -105,6 +106,11 @@
           range[1] === '' ? Infinity :
           // Otherwise
           parseInt(range[1], 10);
+
+      if (isNaN(from) || isNaN(to)) {
+        errorReporter && errorReporter('Invalid date range: ' + rangeList[i]);
+        continue;
+      }
 
       if (today >= from && today <= to) {
         var quizList = quizConfigs[rangeList[i]];
