@@ -187,3 +187,20 @@ export async function navigationHook(
   page.off(PageEvent.Request, handler);
   await page.setRequestInterception(false);
 }
+
+/**
+ * Get all errors reported in debugger.
+ * @export
+ * @param page Page object
+ */
+export async function getErrorsFromDebugger(page: Page): Promise<string[]> {
+  await page.click('.__tagsmith_debugger_open');
+  const errors = [];
+  const $errorList = await page.$$('#__tagsmith_debugger_errors > div');
+  for (let i = 0; i < $errorList.length; i++) {
+    const $error = $errorList[i];
+    errors.push(await $error.evaluate((ele) => ele.innerText));
+  }
+  await page.click('.__tagsmith_debugger_close');
+  return errors;
+}

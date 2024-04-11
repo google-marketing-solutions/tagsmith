@@ -433,6 +433,17 @@
   };
 
   /**
+   * Function for feature to report error.
+   * @param {string} feature
+   * @return {function(string): void}
+   */
+  w[o].__getErrorReporter = function(feature) {
+    return function(error) {
+      errors.push('"' + feature + '": ' + error);
+    };
+  };
+
+  /**
    * Assign current user to a specific variant.
    * @param {string} variant
    */
