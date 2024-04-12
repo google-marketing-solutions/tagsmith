@@ -15,7 +15,7 @@
  */
 
 import * as fs from 'fs';
-import puppeteer, {Browser, Page} from 'puppeteer';
+import puppeteer, {Browser, HTTPRequest, Page, PageEvent} from 'puppeteer';
 
 const SNIPPET = fs.readFileSync('dist/snippet.html').toString();
 const TEMPLATE = fs
@@ -80,6 +80,7 @@ export async function generatePage(args: {
   frameworks?: Array<keyof typeof FRAMEWORK_TAG_MAP>;
   forceAbFactor?: number;
   paragraphs?: number;
+  urlHash?: string;
 }): Promise<Page> {
   if (!browser) {
     throw new Error('Run `await prepare();` before any test.');
@@ -99,6 +100,10 @@ export async function generatePage(args: {
 
   if (args.paragraphs === undefined) {
     args.paragraphs = 5;
+  }
+
+  if (args.urlHash === undefined) {
+    args.urlHash = '';
   }
 
   const tags: string[] = [];
@@ -143,7 +148,7 @@ export async function generatePage(args: {
   const page = await browser.newPage();
 
   // Open an actual file so features that require URL(e.g. localStorage) works.
-  await page.goto(`file://${process.cwd()}/spec/empty.html`);
+  await page.goto(`file://${process.cwd()}/spec/empty.html#${args.urlHash}`);
 
   if (args.forceAbFactor !== undefined) {
     await page.evaluate(
@@ -154,4 +159,48 @@ export async function generatePage(args: {
   await page.setContent(html);
 
   return page;
+}
+
+/**
+ * Hook page navigation without navigating away from the page.
+ * @param page Page object
+ * @param trigger Function to trigger navigation
+ * @param onRequest Called when navigation happens
+ */
+export async function navigationHook(
+    page: Page,
+    trigger: () => Promise<void>,
+    onRequest?: (request: HTTPRequest) => Promise<void>
+) {
+  const handler = async (request: HTTPRequest) => {
+    if (onRequest) {
+      await onRequest(request);
+    }
+    request.abort('aborted');
+  };
+
+  await page.setRequestInterception(true);
+  page.on(PageEvent.Request, handler);
+
+  await trigger();
+
+  page.off(PageEvent.Request, handler);
+  await page.setRequestInterception(false);
+}
+
+/**
+ * Get all errors reported in debugger.
+ * @export
+ * @param page Page object
+ */
+export async function getErrorsFromDebugger(page: Page): Promise<string[]> {
+  await page.click('.__tagsmith_debugger_open');
+  const errors = [];
+  const $errorList = await page.$$('#__tagsmith_debugger_errors > div');
+  for (let i = 0; i < $errorList.length; i++) {
+    const $error = $errorList[i];
+    errors.push(await $error.evaluate((ele) => ele.innerText));
+  }
+  await page.click('.__tagsmith_debugger_close');
+  return errors;
 }

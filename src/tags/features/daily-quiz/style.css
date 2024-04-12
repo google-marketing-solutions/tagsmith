@@ -1,0 +1,223 @@
+/*
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#__tagsmith_dailyQuiz {
+  font-family: Helvetica Neue, Arial, sans-serif;
+  font-size: 10pt;
+  line-height: 1.7;
+}
+
+.__tagsmith_dailyQuiz_icon {
+  background: center/100% no-repeat url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg width='100%25' height='100%25' viewBox='0 0 512 512' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' xmlns:serif='http://www.serif.com/' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cg transform='matrix(0.842105,0,0,1.26316,15.3421,-18.9474)'%3E%3Crect x='94' y='91' width='76' height='76' style='fill:rgb(255,164,50);'/%3E%3C/g%3E%3Cg transform='matrix(2.52632,0,0,0.842105,-78.9737,-44.6316)'%3E%3Crect x='94' y='91' width='76' height='76' style='fill:rgb(255,109,50);'/%3E%3C/g%3E%3Cg transform='matrix(0.842105,0,0,1.68421,274.342,-57.2632)'%3E%3Crect x='94' y='91' width='76' height='76' style='fill:rgb(255,50,86);'/%3E%3C/g%3E%3Cg transform='matrix(0.842105,0,0,0.842105,210.342,147.368)'%3E%3Crect x='94' y='91' width='76' height='76' style='fill:rgb(255,50,128);'/%3E%3C/g%3E%3Cg transform='matrix(0.842105,0,0,0.842105,146.342,211.368)'%3E%3Crect x='94' y='91' width='76' height='76' style='fill:rgb(255,50,198);'/%3E%3C/g%3E%3Cg transform='matrix(0.842105,0,0,0.842105,146.342,339.368)'%3E%3Crect x='94' y='91' width='76' height='76' style='fill:rgb(200,50,255);'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.__tagsmith_dailyQuiz_completed,
+.__tagsmith_dailyQuiz_answer::before {
+  background: center/100% no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='20' viewBox='0 0 20 20' width='20' fill='%23ff6d32'%3E%3Cpath d='M10,20c-1.383,0 -2.683,-0.262 -3.9,-0.788c-1.217,-0.524 -2.275,-1.237 -3.175,-2.137c-0.9,-0.9 -1.612,-1.958 -2.137,-3.175c-0.525,-1.217 -0.788,-2.517 -0.788,-3.9c0,-1.383 0.263,-2.683 0.788,-3.9c0.525,-1.217 1.237,-2.275 2.137,-3.175c0.9,-0.9 1.958,-1.612 3.175,-2.137c1.217,-0.525 2.517,-0.788 3.9,-0.788c1.083,0 2.108,0.158 3.075,0.475c0.967,0.317 1.858,0.758 2.675,1.325l-1.45,1.475c-0.633,-0.4 -1.308,-0.712 -2.025,-0.937c-0.717,-0.226 -1.475,-0.338 -2.275,-0.338c-2.217,0 -4.104,0.779 -5.662,2.338c-1.559,1.558 -2.338,3.445 -2.338,5.662c0,2.217 0.779,4.104 2.338,5.663c1.558,1.558 3.445,2.337 5.662,2.337c2.217,0 4.104,-0.779 5.663,-2.337c1.558,-1.559 2.337,-3.446 2.337,-5.663c0,-0.3 -0.017,-0.6 -0.05,-0.9c-0.033,-0.3 -0.083,-0.592 -0.15,-0.875l1.625,-1.625c0.183,0.533 0.325,1.083 0.425,1.65c0.1,0.567 0.15,1.15 0.15,1.75c0,1.383 -0.262,2.683 -0.787,3.9c-0.526,1.217 -1.238,2.275 -2.138,3.175c-0.9,0.9 -1.958,1.613 -3.175,2.138c-1.217,0.525 -2.517,0.787 -3.9,0.787Zm-1.4,-5.4l-4.25,-4.25l1.4,-1.4l2.85,2.85l10,-10.025l1.4,1.4l-11.4,11.425Z'/%3E%3C/svg%3E%0A");
+}
+
+.__tagsmith_dailyQuiz_open {
+  position: fixed;
+  /* #region Customize prompt button position */
+  bottom: 20px;
+  right: 20px;
+  /* #endregion */
+  height: 50px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0px 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0px 5px 8px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 14px 0px;
+  z-index: 2147483644;
+  cursor: pointer;
+}
+
+.__tagsmith_dailyQuiz_open:hover {
+  background-color: hsl(0deg 100% 96%);
+  animation: __tagsmith_dailyQuiz_open 8s infinite;
+}
+
+@keyframes __tagsmith_dailyQuiz_open {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.__tagsmith_dailyQuiz_open .__tagsmith_dailyQuiz_icon,
+.__tagsmith_dailyQuiz_open .__tagsmith_dailyQuiz_completed {
+  margin-right: 6px;
+  width: 20px;
+  height: 20px;
+}
+
+.__tagsmith_dailyQuiz_dismiss {
+  padding: 3px;
+  width: 20px;
+  height: 20px;
+  background: center/20px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='20' viewBox='0 -960 960 960' width='20'%3E%3Cpath d='M291-253.847 253.847-291l189-189-189-189L291-706.153l189 189 189-189L706.153-669l-189 189 189 189L669-253.847l-189-189-189 189Z'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+.__tagsmith_dailyQuiz_dismiss:hover {
+  opacity: 1;
+}
+
+.__tagsmith_dailyQuiz_container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2147483644;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.__tagsmith_dailyQuiz_popup {
+  flex: 1 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20px 0;
+  max-width: 600px;
+  max-height: 100%;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0px 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0px 5px 8px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 14px 0px;
+}
+
+.__tagsmith_dailyQuiz_popup button {
+  white-space: nowrap;
+  padding: 0 1em;
+  height: 2.5em;
+  font-size: 1em;
+  color: #000;
+  background: #f1f1f1;
+  border: #c2c2c2 1px solid;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.__tagsmith_dailyQuiz_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.__tagsmith_dailyQuiz_logo {
+  margin-bottom: 16px;
+  max-height: 60px;
+  min-height: 40px;
+}
+
+.__tagsmith_dailyQuiz_logo[src="_"] {
+  display: none;
+}
+
+.__tagsmith_dailyQuiz_title {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #202124;
+}
+
+.__tagsmith_dailyQuiz_title .__tagsmith_dailyQuiz_icon {
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+}
+
+.__tagsmith_dailyQuiz_question {
+  margin: 0 20px 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.__tagsmith_dailyQuiz_option {
+  margin: 4px 0;
+  padding: 6px 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.__tagsmith_dailyQuiz_option::before {
+  content: "";
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  border: 2px #c2c2c2 solid;
+  border-radius: 50%;
+}
+
+.__tagsmith_dailyQuiz_option:hover::before {
+  border-color: #000;
+}
+
+.__tagsmith_dailyQuiz_option:focus {
+  animation: __tagsmith_dailyQuiz_shake 0.3s linear;
+}
+
+@keyframes __tagsmith_dailyQuiz_shake {
+  0% { transform: translateX(0); }
+  12.5%, 62.5% { transform: translateX(5px); }
+  37.5%, 87.5% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.__tagsmith_dailyQuiz_answer {
+  background: 200%/200% no-repeat linear-gradient(90deg, transparent, hsl(46deg, 100%, 60%) 90%, transparent);
+  animation: __tagsmith_dailyQuiz_highlight 0.5s linear !important;
+}
+
+@keyframes __tagsmith_dailyQuiz_highlight {
+  0% { background-position-x: 200%; }
+  100% { background-position-x: -100%; }
+}
+
+.__tagsmith_dailyQuiz_answer::before {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 0;
+}
+
+.__tagsmith_dailyQuiz_hint {
+  margin: 10px 20px 0;
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.__tagsmith_dailyQuiz_close {
+  margin-top: 20px;
+  text-align: center;
+}
