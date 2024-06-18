@@ -23,7 +23,7 @@
     "eslint-config-google": "^0.14.0",
     "google-closure-compiler": "^20230802.0.0",
     "jasmine": "^5.1.0",
-    "puppeteer": "^21.5.2",
+    "puppeteer": "^22.11.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.3.2"
   }
