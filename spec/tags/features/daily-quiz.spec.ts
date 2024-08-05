@@ -532,7 +532,7 @@ describe('Daily quiz', () => {
     await testDateRange(quizConfigs, '99999911', null);
   });
 
-  fit('should report error for invalid date range', async () => {
+  it('should report error for invalid date range', async () => {
     const quizConfigs = {
       '２０２４０１０１-２０２４０１１０': [
         {
