@@ -81,6 +81,7 @@ export async function generatePage(args: {
   forceAbFactor?: number;
   paragraphs?: number;
   urlHash?: string;
+  htmlPostProcessor?: (html: string) => string;
 }): Promise<Page> {
   if (!browser) {
     throw new Error('Run `await prepare();` before any test.');
@@ -134,7 +135,7 @@ export async function generatePage(args: {
     tagsHtml = tagsHtml.replaceAll(`{{${key}}}`, value);
   }
 
-  const html = String(TEMPLATE)
+  let html = String(TEMPLATE)
       .replace(
           /<%\s+injection.beforeSnippet\s+%>/,
           args.injection?.beforeSnippet ?? ''
@@ -144,6 +145,10 @@ export async function generatePage(args: {
           PARAGRAPH_PLACEHOLDER.repeat(args.paragraphs)
       )
       .replace(/<%\s+tags\s+%>/, tagsHtml);
+
+  if (args.htmlPostProcessor) {
+    html = args.htmlPostProcessor(html);
+  }
 
   const page = await browser.newPage();
 

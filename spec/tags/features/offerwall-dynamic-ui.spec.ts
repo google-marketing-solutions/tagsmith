@@ -38,7 +38,7 @@ describe('Offerwall dynamic UI', () => {
   beforeEach(browser.launch);
   afterEach(browser.close);
 
-  it('should do nothing if MutationObserver isn\'t avaiable', async () => {
+  it('should do nothing if MutationObserver isn\'t available', async () => {
     const page = await browser.generatePage({
       injection: {
         beforeSnippet: '<script>delete window.MutationObserver</script>',
@@ -82,7 +82,7 @@ describe('Offerwall dynamic UI', () => {
     ).toEqual('rewarded ad option subtext');
   });
 
-  it('should modify UI when MutationObserver is avaiable', async () => {
+  it('should modify UI when MutationObserver is available', async () => {
     const page = await browser.generatePage({
       variantByFeature: {'offerwall-dynamic-ui': 'test1_exp1'},
       variables: {
