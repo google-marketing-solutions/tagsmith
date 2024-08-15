@@ -4,15 +4,13 @@ Feature ID: `htmlReplacer`
 
 ## What it is?
 
-Replaces the HTML content of any page element(s) specified by a CSS selector.
+Replaces the HTML content of any page element(s) specified by a CSS selector. Typically useful for running customized UI A/B test (by putting `<style>` in replacing HTML to overwrite CSS styles).
 
 **Limitation**: `<script>` tag(s) in the replaced HTML won't work.
 
 ## What it fits for?
 
 All pages.
-
-Typically useful for running UI A/B test (by putting `<style>` in replacing HTML to overwrite CSS styles).
 
 ## Setup
 
