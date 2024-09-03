@@ -120,7 +120,7 @@
 
   /**
    * Get logger for feature on a specific variant.
-   * Implementation is overriden dynamically by `logger.html` to speed up page
+   * Implementation is overridden dynamically by `logger.html` to speed up page
    * loading.
    * @param {string} feature
    * @param {string} forVariant

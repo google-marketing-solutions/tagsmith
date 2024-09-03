@@ -394,7 +394,7 @@ describe('Daily quiz', () => {
   async function testDateRange(
       quizConfigs: { [dateRange: string]: Quiz[] },
       date: string,
-      exptectedQuestion: string | null
+      expectedQuestion: string | null
   ) {
     const page = await browser.generatePage({
       variantByFeature: {'daily-quiz': 'test1_exp1'},
@@ -407,12 +407,12 @@ describe('Daily quiz', () => {
       urlHash: '#__tagsmith.dailyQuiz.date=' + date,
     });
 
-    if (exptectedQuestion !== null) {
+    if (expectedQuestion !== null) {
       expect(
           await (
             await page.$('#__tagsmith_dailyQuiz [name="question"]')
           )?.evaluate((ele) => ele.innerHTML)
-      ).toEqual(exptectedQuestion);
+      ).toEqual(expectedQuestion);
     } else {
       expect(await page.$('#__tagsmith_dailyQuiz')).toBeNull();
     }
@@ -641,7 +641,7 @@ describe('Daily quiz', () => {
     });
   });
 
-  it('should be dismissable before answering', async () => {
+  it('should be dismissible before answering', async () => {
     const pageConfig = {
       variantByFeature: {'daily-quiz': 'test1_exp1'},
       variables: {
@@ -684,7 +684,7 @@ describe('Daily quiz', () => {
     expect(await page.evaluate(`window.dataLayer.shift()`)).toBeUndefined();
   });
 
-  it('should be dismissable after answering', async () => {
+  it('should be dismissible after answering', async () => {
     const pageConfig = {
       variantByFeature: {'daily-quiz': 'test1_exp1'},
       variables: {
