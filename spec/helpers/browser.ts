@@ -47,7 +47,7 @@ export async function launch() {
     return;
   }
 
-  browser = await puppeteer.launch({headless: 'new'});
+  browser = await puppeteer.launch({headless: true});
 }
 
 /**

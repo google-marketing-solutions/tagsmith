@@ -195,9 +195,9 @@
   var answer = function(option) {
     saveState({date: today, option: option});
 
-    var $anwser = $root.querySelector('[data-option="' + quiz.answer + '"]');
-    if ($anwser.className.indexOf('__tagsmith_dailyQuiz_answer') === -1) {
-      $anwser.className += ' __tagsmith_dailyQuiz_answer';
+    var $answer = $root.querySelector('[data-option="' + quiz.answer + '"]');
+    if ($answer.className.indexOf('__tagsmith_dailyQuiz_answer') === -1) {
+      $answer.className += ' __tagsmith_dailyQuiz_answer';
     }
 
     var $openIcon = $open.querySelector('.__tagsmith_dailyQuiz_icon');

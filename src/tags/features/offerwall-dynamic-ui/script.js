@@ -62,9 +62,9 @@
    * @param {Element} rootNode
    */
   function modify(rootNode) {
-    var seletorList = Object.keys(TEXT_BY_SELECTOR);
-    for (var i = 0; i < seletorList.length; i++) {
-      var selector = seletorList[i];
+    var selectorList = Object.keys(TEXT_BY_SELECTOR);
+    for (var i = 0; i < selectorList.length; i++) {
+      var selector = selectorList[i];
       var text = TEXT_BY_SELECTOR[selector];
       var $element = rootNode.querySelector(selector);
       if ($element && text !== '' && text !== '_') {
