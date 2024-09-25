@@ -10,3 +10,5 @@ A framework for web publishers which provides a set of experimental features
 publishers can choose to test/deploy with minimal to no coding required. All
 features have A/B testing, logging, and reporting capabilities built-in to
 ensure a standardized test/release flow.
+
+See the [documentation and setup instructions](https://github.com/google-marketing-solutions/tagsmith/tree/main/docs/features) for each feature.
