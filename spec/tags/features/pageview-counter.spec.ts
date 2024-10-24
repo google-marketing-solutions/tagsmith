@@ -16,7 +16,7 @@
 
 import * as browser from '../../helpers/browser';
 
-fdescribe('Pageview counter', () => {
+describe('Pageview counter', () => {
   beforeEach(browser.launch);
   afterEach(browser.close);
 
