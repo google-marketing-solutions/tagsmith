@@ -14,9 +14,10 @@
  * limitations under the License.
  -->
 
-<!-- Tagsmith, v1.0.0 -->
+<!-- Tagsmith, v1.0.1 -->
 <script>
-(function(b,d){var e=[["test1",.05,.1],["test2",.15,.2],["test3",.25,.3],["test4",.35,.4],["test5",.45,.5],["test6",.533,.566,.599],["test7",.632,.665,.698],["test8",.732,.766,.8],["test9",.825,.85,.875,.9],["test10",.925,.95,.975,1]],g=function(){var c=parseFloat(localStorage.getItem("__tagsmith_ab_factor"));if(isNaN(c)||0>c||1<=c)c=Math.random(),localStorage.setItem("__tagsmith_ab_factor",c.toString());for(var a=0;a<e.length;a++)for(var k=e[a][0],f=1;f<e[a].length;f++)if(c<e[a][f])return k+"_"+
-(1===f?"con":"exp"+(f-1));return null}(),h={};b[d]=b[d]||{};b[d].userVariant=function(){return g};b[d].enable=function(c,a){if("all"===a)return!0;if(a.lastIndexOf("_con")+4===a.length||h[a])return!1;h[a]=c;return g===a};b[d].getLogger=function(c,a){return!1};b[d].__debug=function(){return{AB_CONF:e}};b.googletag=b.googletag||{cmd:[]};b.googletag.cmd.unshift(function(){g&&b.googletag.pubads().setTargeting("tagsmith_ab_variant",g)})})(window,"__tagsmith");
+(function(b,c){var e=[["test1",.05,.1],["test2",.15,.2],["test3",.25,.3],["test4",.35,.4],["test5",.45,.5],["test6",.533,.566,.599],["test7",.632,.665,.698],["test8",.732,.766,.8],["test9",.825,.85,.875,.9],["test10",.925,.95,.975,1]],g=function(){var d=parseFloat(localStorage.getItem("__tagsmith_ab_factor"));if(isNaN(d)||0>d||1<=d)d=Math.random(),localStorage.setItem("__tagsmith_ab_factor",d.toString());for(var a=0;a<e.length;a++)for(var k=e[a][0],f=1;f<e[a].length;f++)if(d<e[a][f])return k+"_"+
+(1===f?"con":"exp"+(f-1));return null}(),h={};b[c]=b[c]||{};b[c].userVariant=function(){return g};b[c].enable=function(d,a){if("all"===a)return!0;if(a.lastIndexOf("_con")+4===a.length||h[a])return!1;h[a]=d;return g===a};b[c].getLogger=function(d,a){return!1};b[c].__debug=function(){return{AB_CONF:e}};g&&(b.googletag=b.googletag||{cmd:[]},c=function(){b.googletag.pubads().setTargeting("tagsmith_ab_variant",g)},b.googletag.cmd instanceof Array?b.googletag.cmd.unshift(c):b.googletag.cmd.push(c))})(window,
+"__tagsmith");
 </script>
 <!-- End Tagsmith -->

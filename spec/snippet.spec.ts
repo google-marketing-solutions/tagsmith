@@ -116,13 +116,72 @@ describe('Snippet', () => {
     expect(debugInfo.AB_CONF).toBeDefined();
   });
 
-  it('should register with GPT', async () => {
-    const page = await browser.generatePage({frameworks: []});
+  const mockGptTargeting = `(function (w) {
+    var targeting = {};
+    var pubads = {
+      setTargeting: function (key, value) {
+        if (value instanceof Array) {
+          targeting[key] = value;
+        } else {
+          targeting[key] = [value];
+        }
+      },
+      getTargeting: function (key) {
+        return targeting[key];
+      }
+    };
+    w.googletag = w.googletag || {};
+    w.googletag.pubads = function () {
+      return pubads;
+    };
+  })(window);`;
 
-    const debugInfo = (await page.evaluate(
-        `window.googletag.cmd`
-    )) as unknown[];
+  it('should register with GPT before GPT init', async () => {
+    const page = await browser.generatePage({
+      frameworks: [],
+      forceAbFactor: 0.07,
+    });
 
-    expect(debugInfo.length).toEqual(1);
+    await page.evaluate(mockGptTargeting);
+    await page.evaluate(`
+      for (var i = 0; i < googletag.cmd.length; i++) {
+        googletag.cmd[i]();
+      }
+    `);
+
+    const kvVariant = (await page.evaluate(
+        `googletag.pubads().getTargeting('tagsmith_ab_variant')`
+    )) as string[];
+
+    expect(kvVariant).toEqual(['test1_exp1']);
+  });
+
+  // `googletag.cmd` becomes `CommandArray` which only has `push`.
+  const mockGptCmd = `(function (w) {
+    w.googletag = w.googletag || {};
+    w.googletag.cmd = {
+      push: function (v) {
+        v();
+      }
+    };
+  })(window);`;
+
+  it('should register with GPT after GPT init', async () => {
+    const page = await browser.generatePage({
+      frameworks: [],
+      forceAbFactor: 0.07,
+      injection: {
+        beforeSnippet: `<script>
+          ${mockGptTargeting}
+          ${mockGptCmd}
+        </script>`,
+      },
+    });
+
+    const kvVariant = (await page.evaluate(
+        `googletag.pubads().getTargeting('tagsmith_ab_variant')`
+    )) as string[];
+
+    expect(kvVariant).toEqual(['test1_exp1']);
   });
 });

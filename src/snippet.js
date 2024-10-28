@@ -15,7 +15,7 @@
  *
  * @fileoverview
  * @name Tagsmith
- * @version 1.0.0
+ * @version 1.0.1
  */
 (function(w, o) {
   /**
@@ -140,11 +140,21 @@
     };
   };
 
-  // Register with GPT
-  w.googletag = w.googletag || {cmd: []};
-  w.googletag.cmd.unshift(function() {
-    if (userVariant) {
+  if (userVariant) {
+    // Register with GPT
+    w.googletag = w.googletag || {cmd: []};
+
+    /**
+     * Assign page-level key-value.
+     */
+    var setTargeting = function() {
       w.googletag.pubads().setTargeting(GAM_KEY_VALUE, userVariant);
+    };
+
+    if (w.googletag.cmd instanceof Array) {
+      w.googletag.cmd.unshift(setTargeting);
+    } else {
+      w.googletag.cmd.push(setTargeting);
     }
-  });
+  }
 })(window, '__tagsmith');
