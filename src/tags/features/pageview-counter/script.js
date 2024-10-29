@@ -33,11 +33,20 @@
     var currentTime = new Date().getTime();
 
     if (lastAccessTime && (currentTime - lastAccessTime) < MAX_TIMEOUT) {
-      pv_counter = pv_counter + 1
+      var pv_counter = localStorage.getItem('pageviewCounter', pv_counter);
+      pv_counter = Number(pv_counter) + 1
     } else {
       pv_counter = 1
     }
 
+    googletag.cmd.push(() => {
+      googletag.pubads().setTargeting('pv_counter', String(pv_counter));
+
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+
     localStorage.setItem('lastAccessTime', currentTime);
+    localStorage.setItem('pageviewCounter', pv_counter);
 })();
   

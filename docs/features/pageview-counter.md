@@ -20,6 +20,6 @@ Typically useful for implementing web interstitials with page view conditions.
   - **Type**: `Constant`
   - **Value**: Any available experiment variant (e.g. `test1_exp1`)
 
-2. Preview to see if everything works
+2. Preview to see if everything works.
 3. Submit & publish
-4. Add conditions before GPT tag where you want to triger with pageview conditions.
+4. Add Key-Value conditions in Delivery > Line Items e.g. pv_counter = 5 or othres.
